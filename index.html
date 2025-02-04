@@ -3,43 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi Network Exchange</title>
+    <title>Pi Network Exchange | Secure Crypto Trading</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
 :root {
-    --primary-blue: #2b2e4a;
-    --accent-yellow: #f7b731;
-    --dark-bg: #1a1a2e;
-    --text-white: #ffffff;
-    --button-green: #2ecc71;
+    --primary-blue: #2563eb;
+    --accent-yellow: #f59e0b;
+    --dark-bg: #0f172a;
+    --text-white: #f8fafc;
+    --button-green: #10b981;
+    --glass-bg: rgba(255, 255, 255, 0.05);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
     background-color: var(--dark-bg);
     color: var(--text-white);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .navbar {
-    background-color: rgba(26, 26, 46, 0.9);
+    background: rgba(15, 23, 42, 0.95);
     padding: 1rem 2rem;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .nav-content {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -51,18 +54,42 @@ body {
     font-weight: 700;
     color: var(--accent-yellow);
     letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo i {
+    font-size: 1.4rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
 }
 
 .nav-links a {
     color: var(--text-white);
     text-decoration: none;
-    margin-left: 2.5rem;
-    transition: color 0.3s;
     font-weight: 500;
+    transition: all 0.3s;
+    position: relative;
+    padding: 0.5rem 0;
 }
 
-.nav-links a:hover {
-    color: var(--accent-yellow);
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--accent-yellow);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .hero {
@@ -71,167 +98,243 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(45deg, var(--primary-blue), var(--dark-bg));
     padding: 0 2rem;
     position: relative;
     overflow: hidden;
 }
 
-.hero::after {
+.hero::before {
     content: '';
     position: absolute;
-    width: 200%;
-    height: 200%;
-    background-image: url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80');
-    opacity: 0.1;
-    animation: rotate 20s linear infinite;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+    filter: blur(80px);
+    animation: pulse 8s infinite;
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 0.4; }
 }
 
 .hero-content {
     position: relative;
     z-index: 1;
+    max-width: 800px;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    line-height: 1.2;
+    background: linear-gradient(to right, #f8fafc 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-content p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
     opacity: 0.9;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    color: #94a3b8;
 }
         
 .cta-button { 
-    background-color: var(--button-green);
+    background: var(--button-green);
     color: var(--text-white);
-    padding: 1rem 3rem;
-    border-radius: 30px;
+    padding: 1.2rem 3.5rem;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s;
-    display: inline-block;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.cta-button i {
+    font-size: 1.2rem;
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+    box-shadow: 0 6px 25px rgba(16, 185, 129, 0.5);
 }
 
 .steps-section {
-    padding: 5rem 2rem;
-    background: rgba(255,255,255,0.03);
+    padding: 8rem 2rem;
+    background: rgba(15, 23, 42, 0.7);
+    position: relative;
 }
 
 .steps-container {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
     text-align: center;
 }
 
 .steps-container h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: var(--accent-yellow);
+    font-size: 2.8rem;
+    margin-bottom: 5rem;
+    background: linear-gradient(to right, var(--accent-yellow), #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .steps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
-    margin-top: 3rem;
+    position: relative;
 }
 
 .step-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2.5rem;
-    border-radius: 20px;
-    transition: transform 0.3s;
+    background: var(--glass-bg);
+    padding: 3rem 2rem;
+    border-radius: 25px;
+    transition: all 0.4s;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
 }
 
-.step-card:hover {
-    transform: translateY(-10px);
+.step-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, var(--accent-yellow), transparent 30%);
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+
+.step-card::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: var(--dark-bg);
+    border-radius: 25px;
+}
+
+.step-content {
+    position: relative;
+    z-index: 1;
+}
+
+.step-number {
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    background: var(--accent-yellow);
+    color: var(--dark-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 2rem;
+    font-weight: 700;
 }
 
 .step-icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--accent-yellow);
     margin-bottom: 1.5rem;
 }
 
 .step-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 1rem;
 }
 
 .step-card p {
     opacity: 0.9;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    color: #94a3b8;
 }
 
 .features {
-    padding: 5rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 8rem 2rem;
+    background: linear-gradient(to bottom, var(--dark-bg) 0%, #0b1120 100%);
 }
 
 .features-grid {
+    max-width: 1280px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
 }
 
 .feature-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 15px;
+    background: var(--glass-bg);
+    padding: 3rem 2rem;
+    border-radius: 25px;
     text-align: center;
-    transition: transform 0.3s;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    background: rgba(255,255,255,0.08);
 }
 
 .feature-icon {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--accent-yellow);
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
+.feature-card p {
+    opacity: 0.9;
+    color: #94a3b8;
+}
+
 .footer {
-    background: rgba(0,0,0,0.2);
-    padding: 4rem 2rem;
+    background: #0b1120;
+    padding: 6rem 2rem 3rem;
     margin-top: 5rem;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent-yellow), transparent);
 }
 
 .footer-content {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 4rem;
 }
 
 .footer-section h4 {
     color: var(--accent-yellow);
     margin-bottom: 1.5rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
 .footer-links {
@@ -239,39 +342,72 @@ body {
 }
 
 .footer-links li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
 }
 
 .footer-links a {
-    color: var(--text-white);
+    color: #94a3b8;
     text-decoration: none;
     transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.footer-links a i {
+    width: 20px;
+    color: var(--accent-yellow);
 }
 
 .footer-links a:hover {
-    color: var(--accent-yellow);
+    color: var(--text-white);
+}
+
+.newsletter-form {
+    margin-top: 2rem;
+}
+
+.newsletter-input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.8rem 1.2rem;
+    border-radius: 50px;
+    width: 100%;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.newsletter-input:focus {
+    outline: none;
+    border-color: var(--accent-yellow);
 }
 
 .social-links {
     display: flex;
     gap: 1.5rem;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
 .social-links a {
-    color: var(--text-white);
-    font-size: 1.5rem;
-    transition: color 0.3s;
+    width: 45px;
+    height: 45px;
+    background: var(--glass-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
 }
 
 .social-links a:hover {
-    color: var(--accent-yellow);
+    background: var(--accent-yellow);
+    transform: translateY(-3px);
 }
 
 .footer-bottom {
     text-align: center;
-    margin-top: 3rem;
-    opacity: 0.8;
+    margin-top: 5rem;
+    color: #64748b;
     font-size: 0.9rem;
 }
 
@@ -281,11 +417,11 @@ body {
     }
     
     .hero-content h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
 
     .steps-container h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 }
 
@@ -294,11 +430,14 @@ body {
 <body>
     <nav class="navbar">
         <div class="nav-content">
-            <div class="logo">π NETWORK</div>
+            <div class="logo">
+                <i class="fas fa-coins"></i>
+                π EXCHANGE
+            </div>
             <div class="nav-links">
                 <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#download">Download</a>
+                <a href="#features">Features</a>
+                <a href="#steps">How It Works</a>
                 <a href="#community">Community</a>
             </div>
         </div>
@@ -306,51 +445,63 @@ body {
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Decentralized Pi Network Exchange Platform</h1>
-            <p>Secure peer-to-peer transactions for migrated Pi users. Trade directly with other Pioneers using escrow-protected transactions and real-time market pricing.</p>
-            <a href="index (2).html" class="cta-button">Start Trading Now</a>
+            <h1>Revolutionizing Pi Open Network Exchange</h1>
+            <p>Secure peer-to-peer transactions for migrated users. Trade directly with other Pioneers using escrow-protected transactions and real-time market pricing.</p>
+            <a href="index (2).html" class="cta-button">
+                <i class="fas fa-rocket"></i>
+                Start Trading Now
+            </a>
         </div>
     </section>
 
-    <section class="steps-section">
+    <section class="steps-section" id="steps">
         <div class="steps-container">
-            <h2>Get Started in 3 Easy Steps</h2>
+            <h2>Start Trading in 3 Simple Steps</h2>
             <div class="steps-grid">
                 <div class="step-card">
-                    <i class="fas fa-rocket step-icon"></i>
-                    <h3>1. Activate Exchange</h3>
-                    <p>Complete KYC verification and activate your exchange account through the Pi Browser</p>
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <i class="fas fa-user-check step-icon"></i>
+                        <h3>Verify Identity</h3>
+                        <p>Complete our secure KYC process through the Pi Browser to activate your trading account</p>
+                    </div>
                 </div>
                 <div class="step-card">
-                    <i class="fas fa-coins step-icon"></i>
-                    <h3>2. List Your Pi</h3>
-                    <p>Set your preferred exchange rate and list available Pi from your migrated balance</p>
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <i class="fas fa-chart-line step-icon"></i>
+                        <h3>Set Your Price</h3>
+                        <p>Choose market or limit orders with real-time price tracking and historical data analysis</p>
+                    </div>
                 </div>
                 <div class="step-card">
-                    <i class="fas fa-wallet step-icon"></i>
-                    <h3>3. Add Payment Method</h3>
-                    <p>Connect your preferred payment options for seamless fiat transactions</p>
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <i class="fas fa-handshake step-icon"></i>
+                        <h3>Secure Transaction</h3>
+                        <p>Escrow-protected trades with multi-signature verification and instant settlement</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="features" id="about">
+    <section class="features" id="features">
         <div class="features-grid">
             <div class="feature-card">
                 <i class="fas fa-shield-alt feature-icon"></i>
-                <h3>Military-Grade Security</h3>
-                <p>End-to-end encryption and multi-signature escrow protection for all transactions</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-chart-line feature-icon"></i>
-                <h3>Real-Time Market Data</h3>
-                <p>Live price tracking and historical charts powered by decentralized oracles</p>
+                <h3>Advanced Security</h3>
+                <p>Bank-grade encryption with 2FA and biometric authentication for all transactions</p>
             </div>
             <div class="feature-card">
                 <i class="fas fa-globe feature-icon"></i>
-                <h3>Global Network</h3>
-                <p>Connect with Pi users across 200+ countries with multi-language support</p>
+                <h3>Global Reach</h3>
+                <p>Support for 150+ currencies and payment methods across 200+ countries</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-pie feature-icon"></i>
+                <h3>Market Insights</h3>
+                <p>Real-time analytics, price alerts, and predictive market trends</p>
             </div>
         </div>
     </section>
@@ -358,37 +509,70 @@ body {
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Pi Network</h4>
+                <h4>Pi Exchange</h4>
                 <ul class="footer-links">
-                    <li><a href="#">About Pi</a></li>
-                    <li><a href="#">White Paper</a></li>
-                    <li><a href="#">Roadmap</a></li>
-                    <li><a href="#">Careers</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>About Us</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Security</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Fees</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>API Documentation</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Resources</h4>
+                <h4>Legal</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Developer API</a></li>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Legal Documents</a></li>
-                    <li><a href="#">Network Status</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>AML Policy</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Cookie Policy</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Community</h4>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email">
+                    <button class="cta-button" style="width: 100%">Subscribe</button>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2023 Pi Network Community. All rights reserved.</p>
-            <p>Decentralized exchange powered by Pi blockchain technology</p>
+            <p>© 2025 Pi Network Exchange. All rights reserved.</p>
+            <p>Decentralized trading powered by blockchain technology</p>
         </div>
     </footer>
+
+    <script>
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll animation for cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.step-card, .feature-card').forEach((el) => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
