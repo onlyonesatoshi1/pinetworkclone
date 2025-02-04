@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi Network Clone</title>
+    <title>Pi Network Exchange</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
 :root {
     --primary-blue: #2b2e4a;
@@ -18,7 +19,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -34,6 +35,7 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
 .nav-content {
@@ -45,16 +47,18 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 700;
     color: var(--accent-yellow);
+    letter-spacing: 1.5px;
 }
 
 .nav-links a {
     color: var(--text-white);
     text-decoration: none;
-    margin-left: 2rem;
+    margin-left: 2.5rem;
     transition: color 0.3s;
+    font-weight: 500;
 }
 
 .nav-links a:hover {
@@ -69,33 +73,115 @@ body {
     text-align: center;
     background: linear-gradient(45deg, var(--primary-blue), var(--dark-bg));
     padding: 0 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image: url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80');
+    opacity: 0.1;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 2rem;
     opacity: 0.9;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
         
 .cta-button { 
     background-color: var(--button-green);
     color: var(--text-white);
-    padding: 1rem 2.5rem;
+    padding: 1rem 3rem;
     border-radius: 30px;
     text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.3s;
+    font-weight: 600;
+    transition: all 0.3s;
     display: inline-block;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
 }
 
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+}
 
+.steps-section {
+    padding: 5rem 2rem;
+    background: rgba(255,255,255,0.03);
+}
 
+.steps-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.steps-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--accent-yellow);
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.step-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border-radius: 20px;
+    transition: transform 0.3s;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+}
+
+.step-icon {
+    font-size: 3rem;
+    color: var(--accent-yellow);
+    margin-bottom: 1.5rem;
+}
+
+.step-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.step-card p {
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
 
 .features {
     padding: 5rem 2rem;
@@ -115,6 +201,11 @@ body {
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
 }
 
 .feature-icon {
@@ -123,13 +214,78 @@ body {
     margin-bottom: 1rem;
 }
 
+.footer {
+    background: rgba(0,0,0,0.2);
+    padding: 4rem 2rem;
+    margin-top: 5rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+}
+
+.footer-section h4 {
+    color: var(--accent-yellow);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent-yellow);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-yellow);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none;
     }
     
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+    }
+
+    .steps-container h2 {
+        font-size: 2rem;
     }
 }
 
@@ -150,30 +306,89 @@ body {
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>List and sell your Pi in the Open Network Exchange</h1>
-            <p>Direct Pi-oneer to Pi-oneer transactions securely Available for migrated users only</p>
-            <a href="index (2).html" class="cta-button">Activate Exchange</a>
+            <h1>Decentralized Pi Network Exchange Platform</h1>
+            <p>Secure peer-to-peer transactions for migrated Pi users. Trade directly with other Pioneers using escrow-protected transactions and real-time market pricing.</p>
+            <a href="index (2).html" class="cta-button">Start Trading Now</a>
+        </div>
+    </section>
+
+    <section class="steps-section">
+        <div class="steps-container">
+            <h2>Get Started in 3 Easy Steps</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <i class="fas fa-rocket step-icon"></i>
+                    <h3>1. Activate Exchange</h3>
+                    <p>Complete KYC verification and activate your exchange account through the Pi Browser</p>
+                </div>
+                <div class="step-card">
+                    <i class="fas fa-coins step-icon"></i>
+                    <h3>2. List Your Pi</h3>
+                    <p>Set your preferred exchange rate and list available Pi from your migrated balance</p>
+                </div>
+                <div class="step-card">
+                    <i class="fas fa-wallet step-icon"></i>
+                    <h3>3. Add Payment Method</h3>
+                    <p>Connect your preferred payment options for seamless fiat transactions</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="features" id="about">
         <div class="features-grid">
             <div class="feature-card">
-                <i class="fas fa-mobile-alt feature-icon"></i>
-                <h3>Mobile First</h3>
-                <p>Mine directly from your smartphone without draining battery</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-users feature-icon"></i>
-                <h3>Community Powered</h3>
-                <p>Join millions of pioneers in the Pi network community</p>
-            </div>
-            <div class="feature-card">
                 <i class="fas fa-shield-alt feature-icon"></i>
-                <h3>Secure</h3>
-                <p>Military-grade encryption protecting your digital assets</p>
+                <h3>Military-Grade Security</h3>
+                <p>End-to-end encryption and multi-signature escrow protection for all transactions</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line feature-icon"></i>
+                <h3>Real-Time Market Data</h3>
+                <p>Live price tracking and historical charts powered by decentralized oracles</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-globe feature-icon"></i>
+                <h3>Global Network</h3>
+                <p>Connect with Pi users across 200+ countries with multi-language support</p>
             </div>
         </div>
     </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Pi Network</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Pi</a></li>
+                    <li><a href="#">White Paper</a></li>
+                    <li><a href="#">Roadmap</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Developer API</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Legal Documents</a></li>
+                    <li><a href="#">Network Status</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Community</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2023 Pi Network Community. All rights reserved.</p>
+            <p>Decentralized exchange powered by Pi blockchain technology</p>
+        </div>
+    </footer>
 </body>
 </html>
